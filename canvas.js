@@ -1,3 +1,4 @@
+let audio = document.querySelector('audio')
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
@@ -56,11 +57,11 @@ let particles
 function init() {
   particles = []
 
-  for (let i = 0; i < 300; i++) {
-    const x = randomIntFromRange(-(Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.width, 2))) / 2,
-      (Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.width, 2))) / 2)
-    const y = randomIntFromRange(-(Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.width, 2))) / 2,
-      (Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.width, 2))) / 2)
+  for (let i = 0; i < canvas.width / 3; i++) {
+    const x = randomIntFromRange(-(Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2))) / 2,
+      (Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2))) / 2)
+    const y = randomIntFromRange(-(Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2))) / 2,
+      (Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2))) / 2)
     const radius = Math.random() * 2
 
     particles.push(new Paricles(x, y, radius,
@@ -90,8 +91,12 @@ function animate() {
   }
   if (mouseDown) {
     radians += 0.0025
+    audio.setAttribute('autoplay', '')
+    audio.setAttribute('loop', '')
   } else if (!mouseDown) {
     radians += 0.001
+    audio.removeAttribute('autoplay')
+    audio.removeAttribute('loop')
   }
 }
 
