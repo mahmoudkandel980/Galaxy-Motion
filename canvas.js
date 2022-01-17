@@ -19,7 +19,6 @@ addEventListener('resize', () => {
 
 let mouseDown = false
 addEventListener('mousedown', () => {
-  var context = new AudioContext();
   mouseDown = true
 })
 addEventListener('mouseup', () => {
@@ -57,7 +56,7 @@ let particles
 function init() {
   particles = []
 
-  for (let i = 0; i < canvas.height * 1.5; i++) {
+  for (let i = 0; i < canvas.height / 3; i++) {
     const x = randomIntFromRange(-(Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.width, 2))) / 2,
       (Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.width, 2))) / 2)
     const y = randomIntFromRange(-(Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.width, 2))) / 2,
@@ -93,13 +92,6 @@ function animate() {
     radians += 0.0025
   } else if (!mouseDown) {
     radians += 0.001
-  }
-  let isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-  if (!isChrome) {
-    $('#iframeAudio').remove()
-  }
-  else {
-    $('#playAudio').remove() // just to make sure that it will not have 2x audio in the background 
   }
 }
 
