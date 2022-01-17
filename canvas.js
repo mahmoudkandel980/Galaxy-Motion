@@ -56,7 +56,7 @@ let particles
 function init() {
   particles = []
 
-  for (let i = 0; i < canvas.height / 3; i++) {
+  for (let i = 0; i < 300; i++) {
     const x = randomIntFromRange(-(Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.width, 2))) / 2,
       (Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.width, 2))) / 2)
     const y = randomIntFromRange(-(Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.width, 2))) / 2,
