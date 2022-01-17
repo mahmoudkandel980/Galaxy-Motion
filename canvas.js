@@ -3,7 +3,6 @@ const c = canvas.getContext('2d')
 
 canvas.width = innerWidth
 canvas.height = innerHeight
-
 const mouse = {
   x: innerWidth / 2,
   y: innerHeight / 2
@@ -19,10 +18,11 @@ addEventListener('resize', () => {
 })
 
 let mouseDown = false
-addEventListener('mousedown', (event) => {
+addEventListener('mousedown', () => {
+  var context = new AudioContext();
   mouseDown = true
 })
-addEventListener('mouseup', (event) => {
+addEventListener('mouseup', () => {
   mouseDown = false
 })
 
@@ -93,6 +93,7 @@ function animate() {
     radians += 0.0025
   } else if (!mouseDown) {
     radians += 0.001
+
   }
 }
 
