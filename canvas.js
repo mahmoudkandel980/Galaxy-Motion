@@ -1,6 +1,6 @@
-let audio = document.querySelector('audio')
-const canvas = document.querySelector('canvas')
-const c = canvas.getContext('2d')
+const canvas = document.querySelector('canvas');
+const c = canvas.getContext('2d');
+const audio = document.querySelector('audio')
 
 canvas.width = innerWidth
 canvas.height = innerHeight
@@ -21,9 +21,25 @@ addEventListener('resize', () => {
 let mouseDown = false
 addEventListener('mousedown', () => {
   mouseDown = true
+  audio.play()
 })
 addEventListener('mouseup', () => {
   mouseDown = false
+  setTimeout(() => {
+    audio.pause()
+  }, 500);
+})
+
+//mobile
+addEventListener('touchstart', () => {
+  mouseDown = true
+  audio.play()
+})
+addEventListener('touchend', () => {
+  mouseDown = false
+  setTimeout(() => {
+    audio.pause()
+  }, 500);
 })
 
 function randomIntFromRange(min, max) {
@@ -91,12 +107,9 @@ function animate() {
   }
   if (mouseDown) {
     radians += 0.0025
-    audio.setAttribute('autoplay', '')
-    audio.setAttribute('loop', '')
+
   } else if (!mouseDown) {
     radians += 0.001
-    audio.removeAttribute('autoplay')
-    audio.removeAttribute('loop')
   }
 }
 
